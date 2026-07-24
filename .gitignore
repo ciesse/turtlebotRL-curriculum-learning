@@ -1,0 +1,13 @@
+# Python / ROS2
+__pycache__/
+*.pyc
+build/
+install/
+log/
+.vscode/
+
+# Reinforcement Learning Logs (TensorBoard diventa enorme)
+ppo_tensorboard/
+*INTERRUPTED*.zip
+
+

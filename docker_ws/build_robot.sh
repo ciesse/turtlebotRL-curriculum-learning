@@ -1,0 +1,1 @@
+docker build -t immagine_robot_rl -f dockerfile.robotrl .

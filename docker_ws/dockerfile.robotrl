@@ -1,0 +1,41 @@
+FROM osrf/ros:jazzy-desktop
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TURTLEBOT3_MODEL=burger
+
+RUN apt-get update && apt-get install -y \
+    ros-jazzy-ros-gz \
+    ros-jazzy-ros-gz-bridge \
+    ros-jazzy-turtlebot3-gazebo \
+    ros-jazzy-turtlebot3-simulations \
+    ros-jazzy-turtlebot3-description \
+    ros-jazzy-turtlebot3-msgs \
+    ros-jazzy-robot-state-publisher \
+    ros-jazzy-joint-state-publisher \
+    ros-jazzy-rviz2 \
+    ros-jazzy-xacro \
+    ros-jazzy-ament-index-python \
+    python3-colcon-common-extensions \
+    python3-pip \
+    python3-setuptools \
+    mesa-utils \
+    libgl1 \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install --break-system-packages --default-timeout=1000 \
+    torch --index-url https://download.pytorch.org/whl/cpu
+
+RUN pip3 install --break-system-packages --default-timeout=1000 \
+    "numpy<2.0.0" \
+    gymnasium \
+    "stable-baselines3[extra]" \
+    tensorboard \
+    shimmy \
+    sb3-contrib
+
+WORKDIR /app
+
+EXPOSE 6006
+
+RUN echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
