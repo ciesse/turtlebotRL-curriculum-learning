@@ -5,7 +5,7 @@ Follow these steps to run the simulation and the RL agent using the provided Doc
 # Prerequisites
 Clone this repository and open a terminal inside the downloaded project folder.
 
-#Available Curriculum Stages
+# Available Curriculum Stages
 When running the commands below, replace `<model_name>` with one of the following available stages:
 free;
 medium;
